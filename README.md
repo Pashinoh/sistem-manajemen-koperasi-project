@@ -52,7 +52,9 @@ koperasi/
 
 ### 1️⃣ Clone Repository
 ```bash
-git clone https://github.com/<username-kamu>/koperasi.git
+git clone https://github.com/Pashinoh/sistem-manajemen-koperasi-project.git
+```
+```bash
 cd koperasi
 ```
 ```bash
