@@ -58,8 +58,7 @@ cd koperasi
 python setup.py
 
 cp .env.example .env
-
-`` `
+```
 ## ⚙️ jalankan app
 ```bash
 flask run
