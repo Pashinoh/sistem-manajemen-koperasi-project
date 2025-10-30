@@ -54,9 +54,11 @@ koperasi/
 ```bash
 git clone https://github.com/<username-kamu>/koperasi.git
 cd koperasi
-
+```
+```bash
 python setup.py
-
+```
+```bash
 cp .env.example .env
 ```
 ## ⚙️ jalankan app
