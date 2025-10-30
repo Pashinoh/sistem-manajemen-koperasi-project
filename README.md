@@ -54,3 +54,12 @@ koperasi/
 ```bash
 git clone https://github.com/<username-kamu>/koperasi.git
 cd koperasi
+
+python setup.py
+
+cp .env.example .env
+
+`` `
+## ⚙️ jalankan app
+```bash
+flask run
