@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Daftar Anggota{% endblock %}
+{% block content %}
+<h2>Daftar Anggota</h2>
+
+<table border="1" cellpadding="5">
+  <tr>
+    <th>ID</th>
+    <th>Username</th>
+    <th>Role</th>
+    <th>Aksi</th>
+  </tr>
+  {% for a in anggota %}
+  <tr>
+    <td>{{ a.id }}</td>
+    <td>{{ a.username }}</td>
+    <td>{{ a.role }}</td>
+    <td>
+      {% if session.get('role') == 'admin' %}
+      <form method="POST" action="{{ url_for('member.hapus_anggota', id=a.id) }}" onsubmit="return confirm('Yakin ingin hapus?');">
+        <button type="submit">Hapus</button>
+      </form>
+      {% endif %}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

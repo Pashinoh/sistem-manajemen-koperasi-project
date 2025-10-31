@@ -1,0 +1,11 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fafafa;
+  padding: 20px;
+}
+nav {
+  margin-bottom: 15px;
+}
+.alert.success { color: green; }
+.alert.danger { color: red; }
+.alert.warning { color: orange; }
