@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Tambah Transaksi</h2>
+<form method="POST">
+    <div class="mb-3">
+        <label>Tipe Transaksi</label>
+        <select name="type" class="form-control" required>
+            <option value="simpan">Simpan</option>
+            <option value="pinjam">Pinjam</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Jumlah (Rp)</label>
+        <input type="number" name="amount" class="form-control" required>
+    </div>
+    <button class="btn btn-primary">Simpan</button>
+</form>
+{% endblock %}

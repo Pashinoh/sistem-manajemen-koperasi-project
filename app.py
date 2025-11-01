@@ -1,28 +1,34 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_migrate import Migrate
-from models.models import db
+from flask_login import LoginManager
+from models import db
+from models.user_model import User
 from routes.auth_routes import auth_bp
-from routes.main_routes import main_bp
-from routes.member_routes import member_bp
 from routes.transaction_routes import transaction_bp
-import os
+from routes.main_routes import main  # pastikan nama sesuai file
+from config import Config
 
 app = Flask(__name__)
+app.config.from_object(Config)
 
-# Konfigurasi
-app.config['SECRET_KEY'] = 'supersecretkey'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///koperasi.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-# Inisialisasi Database
 db.init_app(app)
 migrate = Migrate(app, db)
 
-# Blueprint (urutan penting!)
-app.register_blueprint(main_bp)         # Halaman utama (landing)
-app.register_blueprint(auth_bp, url_prefix="/auth")   # Login/Register
-app.register_blueprint(member_bp, url_prefix="/anggota")
-app.register_blueprint(transaction_bp, url_prefix="/transaksi")
+login_manager = LoginManager(app)
+login_manager.login_view = 'auth.login'  # mengarah ke endpoint blueprint auth
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+# register blueprint
+app.register_blueprint(auth_bp)
+app.register_blueprint(transaction_bp)  # sudah ada di repo
+app.register_blueprint(main)
+
+@app.route('/')
+def landing():
+    return render_template('landing.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

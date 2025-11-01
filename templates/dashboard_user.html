@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Selamat datang, {{ username }}!</h2>
+    <p>Ini adalah panel anggota koperasi Anda.</p>
+
+    <div class="list-group mt-3">
+        <a href="{{ url_for('transaction.user_transactions') }}" class="list-group-item list-group-item-action">
+            💰 Lihat Transaksi Saya
+        </a>
+        <a href="{{ url_for('transaction.add_transaction') }}" class="list-group-item list-group-item-action">
+            ➕ Tambah Transaksi
+        </a>
+    </div>
+</div>
+{% endblock %}

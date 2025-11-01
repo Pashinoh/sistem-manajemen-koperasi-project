@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Daftar Transaksi Saya</h2>
+<a href="{{ url_for('transaction.add_transaction') }}" class="btn btn-success mb-3">+ Tambah Transaksi</a>
+<table class="table table-bordered">
+    <tr>
+        <th>Tipe</th>
+        <th>Jumlah</th>
+        <th>Tanggal</th>
+        <th>Status</th>
+    </tr>
+    {% for t in transactions %}
+    <tr>
+        <td>{{ t.type }}</td>
+        <td>Rp{{ "%.2f"|format(t.amount) }}</td>
+        <td>{{ t.date.strftime("%d-%m-%Y") }}</td>
+        <td>{{ t.status }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

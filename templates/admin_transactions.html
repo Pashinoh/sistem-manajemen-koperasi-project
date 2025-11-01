@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Manajemen Transaksi Anggota</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>User</th>
+        <th>Tipe</th>
+        <th>Jumlah</th>
+        <th>Tanggal</th>
+        <th>Status</th>
+        <th>Aksi</th>
+    </tr>
+    {% for t in transactions %}
+    <tr>
+        <td>{{ t.user.username }}</td>
+        <td>{{ t.type }}</td>
+        <td>Rp{{ "%.2f"|format(t.amount) }}</td>
+        <td>{{ t.date.strftime("%d-%m-%Y") }}</td>
+        <td>{{ t.status }}</td>
+        <td>
+            <form method="POST" action="{{ url_for('transaction.update_transaction', id=t.id) }}">
+                <select name="status" class="form-select">
+                    <option value="pending" {% if t.status == 'pending' %}selected{% endif %}>Pending</option>
+                    <option value="selesai" {% if t.status == 'selesai' %}selected{% endif %}>Selesai</option>
+                    <option value="ditolak" {% if t.status == 'ditolak' %}selected{% endif %}>Ditolak</option>
+                </select>
+                <button class="btn btn-sm btn-primary mt-2">Update</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
