@@ -23,46 +23,13 @@ Tujuan utama proyek ini adalah untuk memenuhi **Tugas Akhir UAS** mata kuliah *P
 
 ---
 
-## 📂 Struktur Folder
-```bash
-koperasi/
-│
-├── app.py
-├── models/
-│ └── models.py
-├── routes/
-│ ├── auth_routes.py
-│ └── main_routes.py
-├── templates/
-│ ├── login.html
-│ ├── register.html
-│ └── dashboard.html
-├── static/
-│ └── style.css
-│
-├── requirements.txt
-├── setup.py
-├── .env.example
-├── .gitignore
-└── README.md
-```
----
-
 ## ⚙️ Persiapan Awal
 
 ### 1️⃣ Clone Repository
 ```bash
 git clone https://github.com/Pashinoh/sistem-manajemen-koperasi-project.git
 ```
-```bash
-cd koperasi
-```
-```bash
-python setup.py
-```
-```bash
-cp .env.example .env
-```
+
 ## ⚙️ jalankan app
 ```bash
 flask run
